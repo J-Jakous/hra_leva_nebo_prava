@@ -1,14 +1,17 @@
 input.onButtonPressed(Button.A, function () {
-    if (nahoda == true) {
+    if (nahoda && !(kliknul)) {
         body += 1
     }
+    kliknul = true
 })
 input.onButtonPressed(Button.B, function () {
-    if (nahoda == false) {
+    if (!(nahoda) && !(kliknul)) {
         body += 1
     }
+    kliknul = true
 })
 let nahoda = false
+let kliknul = false
 let body = 0
 let odpocet = 3
 for (let index = 0; index < 3; index++) {
@@ -18,8 +21,9 @@ for (let index = 0; index < 3; index++) {
 }
 basic.clearScreen()
 for (let index = 0; index < 10; index++) {
+    kliknul = false
     nahoda = Math.randomBoolean()
-    if (nahoda == true) {
+    if (nahoda) {
         basic.showArrow(ArrowNames.West)
     } else {
         basic.showArrow(ArrowNames.East)
